@@ -1,4 +1,6 @@
-<h1 align="center">Hello, I'm Poziel 👋</h1>
+<h1 align="center">
+  Hello, I'm Poziel <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35px" style="margin-bottom: 0px;" />
+</h1>
 
 <p align="center">
   Full-stack Developer • Tech Enthusiast • Gamer at Heart 🎮
@@ -28,7 +30,7 @@
 
 ## 🛠️ Tech Stack
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,scss,js,ts,react,blazor,cs,dotnet,azure,postgresql,mysql,git,github" />
+  <img src="https://skillicons.dev/icons?i=cs,js,ts,py,php,lua,html,css,scss,sass,svg,jquery,laravel,wasm,vscode,visualstudio,postman,codepen,gulp,docker,postgres,mysql,azure,windows,git,github,discord,bots,regex,notion,ai,ps&perline=10&theme=dark" />
 </div>
 
 <br/>
@@ -54,10 +56,20 @@
 <br/>
 
 ## 📫 How to reach me
-- Discord: `Pøziel#2962`
-- Twitch: [Poziel](https://www.twitch.tv/poziel)
-- Steam: [Pøziel](https://steamcommunity.com/id/poziel/)
-- LinkedIn: [Poziel](https://www.linkedin.com/in/poziel/)
+<div align="center">
+  <a href="https://discord.com/users/poziel" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/Discord-P%C3%B8ziel%232962-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Badge"/>
+  </a>
+  <a href="https://www.twitch.tv/poziel" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/Twitch-Poziel-9146FF?style=for-the-badge&logo=twitch&logoColor=white" alt="Twitch Badge"/>
+  </a>
+  <a href="https://steamcommunity.com/id/poziel/" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/Steam-Pøziel-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Badge"/>
+  </a>
+  <a href="https://www.linkedin.com/in/poziel/" target="_blank" style="text-decoration:none">
+    <img src="https://img.shields.io/badge/LinkedIn-Poziel-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+</div>
 
 <br/>
 
