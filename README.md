@@ -13,7 +13,7 @@
 ---
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=24&pause=1000&color=2D96FF&center=true&vCenter=true&width=435&lines=Full-Stack+Developer;Web+Artist+and+Code+Crafter;Always+Learning+and+Creating" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&pause=1000&color=ff6e96&center=true&vCenter=true&width=500&lines=Full-Stack+Developer;Web+Artist+and+Code+Crafter;Always+Learning+and+Creating" alt="Typing SVG" />
 </div>
 
 ---
@@ -30,7 +30,7 @@
 
 ## 🛠️ Tech Stack
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=cs,js,ts,py,php,lua,html,css,scss,sass,svg,jquery,laravel,wasm,vscode,visualstudio,postman,codepen,gulp,docker,postgres,mysql,azure,windows,git,github,discord,bots,regex,notion,ai,ps&perline=10&theme=dark" />
+  <img src="https://skillicons.dev/icons?i=cs,js,ts,py,php,lua,html,css,scss,svg,jquery,laravel,wasm,vscode,visualstudio,postman,codepen,gulp,docker,postgres,mysql,azure,windows,git,github,discord,bots,regex,notion,ai,ps&perline=10&theme=dark" />
 </div>
 
 <br/>
@@ -38,12 +38,12 @@
 ## 📈 GitHub Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=poziel&bg_color=90,2d96ff,a355ff,e534e6&title_color=fff&text_color=fff&rank_icon=github&show_icons=true&count_private=true&hide_border=true" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=poziel&theme=react&background=90,2d96ff,a355ff,e534e6&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api?username=poziel&theme=dracula&rank_icon=github&show_icons=true&count_private=true&hide_border=true" />
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=poziel&theme=dracula&hide_border=true&border_radius=0&short_numbers=true&mode=weekly" alt="GitHub Streak" />
   <br/><br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=poziel&layout=donut&bg_color=90,2d96ff,a355ff,e534e6&title_color=fff&text_color=fff&hide_border=true" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=poziel&theme=dracula" />
   <br/><br/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=poziel&theme=vue" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=poziel&layout=donut&theme=dracula&hide_border=true" />
 </div>
 
 <br/>
@@ -57,17 +57,17 @@
 
 ## 📫 How to reach me
 <div align="center">
-  <a href="https://discord.com/users/poziel" target="_blank" style="text-decoration:none">
+  <a href="https://discord.com/users/poziel" style="text-decoration:none" target="_blank">
     <img src="https://img.shields.io/badge/Discord-P%C3%B8ziel%232962-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Badge"/>
   </a>
-  <a href="https://www.twitch.tv/poziel" target="_blank" style="text-decoration:none">
+  <a href="https://www.twitch.tv/poziel" style="text-decoration:none" target="_blank">
     <img src="https://img.shields.io/badge/Twitch-Poziel-9146FF?style=for-the-badge&logo=twitch&logoColor=white" alt="Twitch Badge"/>
   </a>
-  <a href="https://steamcommunity.com/id/poziel/" target="_blank" style="text-decoration:none">
+  <a href="https://steamcommunity.com/id/poziel/" style="text-decoration:none" target="_blank">
     <img src="https://img.shields.io/badge/Steam-Pøziel-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Badge"/>
   </a>
-  <a href="https://www.linkedin.com/in/poziel/" target="_blank" style="text-decoration:none">
-    <img src="https://img.shields.io/badge/LinkedIn-Poziel-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  <a href="https://www.linkedin.com/in/poziel/" style="text-decoration:none" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-Alexandre-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a>
 </div>
 
