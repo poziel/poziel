@@ -38,12 +38,13 @@
 ## 📈 GitHub Stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=poziel&theme=dracula&rank_icon=github&show_icons=true&count_private=true&hide_border=true" />
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=poziel&theme=dracula&hide_border=true&border_radius=0&short_numbers=true&mode=weekly" alt="GitHub Streak" />
-  <br/><br/>
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=poziel&theme=dracula" />
   <br/><br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=poziel&layout=donut&theme=dracula&hide_border=true" />
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=poziel&theme=dracula" />
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=poziel&theme=dracula"/>
+  <br/><br/>
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=poziel&theme=dracula" />
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=poziel&theme=dracula&utcOffset=-6"/>
 </div>
 
 <br/>
@@ -55,16 +56,16 @@
 
 <br/>
 
-## 📫 How to reach me
+## 📫 Where to find me
 <div align="center">
-  <a href="https://discord.com/users/poziel" style="text-decoration:none" target="_blank">
-    <img src="https://img.shields.io/badge/Discord-P%C3%B8ziel%232962-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord Badge"/>
-  </a>
   <a href="https://www.twitch.tv/poziel" style="text-decoration:none" target="_blank">
     <img src="https://img.shields.io/badge/Twitch-Poziel-9146FF?style=for-the-badge&logo=twitch&logoColor=white" alt="Twitch Badge"/>
   </a>
-  <a href="https://steamcommunity.com/id/poziel/" style="text-decoration:none" target="_blank">
-    <img src="https://img.shields.io/badge/Steam-Pøziel-000000?style=for-the-badge&logo=steam&logoColor=white" alt="Steam Badge"/>
+  <a href="https://youtube.com/@xpoziel" style="text-decoration:none" target="_blank">
+    <img src="https://img.shields.io/badge/Youtube-Pøziel-ff0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Youtube Badge"/>
+  </a>
+  <a href="https://x.com/xpoziel style="text-decoration:none" target="_blank">
+    <img src="https://img.shields.io/badge/X-Pøziel-000000?style=for-the-badge&logo=x&logoColor=white" alt="X Badge"/>
   </a>
   <a href="https://www.linkedin.com/in/poziel/" style="text-decoration:none" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-Alexandre-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
