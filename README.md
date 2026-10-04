@@ -3,17 +3,26 @@
 </p>
 
 <p align="center">
-  From Québec, Canada 🍁
+  
 </p>
 
 <img src="assets/sections/about-me.png"/>
 
+- 🍁 Based in Québec, Canada
 - 🔭 I’m currently working as a Full-Stack Developer at [Progi](https://progi.com/en/)
 - 🌱 Always learning and polishing my AI knowledges and skills
 - 🎨 Infographics and stylish UI design fan
 - 🧠 Passionate about productivity and optimization
 - 👨‍👩‍👧 Building the **EØGAMING** community and brand
 - 🎮 Gamer addicted to innovation and creativity
+
+<br/>
+
+<img src="assets/sections/current-projects.png"/>
+
+- **[localdev](https://github.com/poziel/localdev)** — A command-line tool that brings local projects, supporting services, and development workflows into one place.
+- **[Refinimo](https://github.com/poziel/refinimo)** — A free planning poker app that helps teams estimate work together, with custom decks and real-time voting.
+- **[Subfolio](https://github.com/poziel/subfolio)** — An app for tracking subscriptions and recurring expenses, projecting upcoming costs, and understanding spending over time.
 
 <br/>
 
