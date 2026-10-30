@@ -6,7 +6,7 @@
   
 </p>
 
-<img src="assets/sections/about-me.png"/>
+# About Me
 
 - 🍁 Based in Québec, Canada
 - 🔭 I’m currently working as a Full-Stack Developer at [Progi](https://progi.com/en/)
@@ -18,23 +18,24 @@
 
 <br/>
 
-<img src="assets/sections/current-projects.png"/>
+# Pinned Project
 
-- **[localdev](https://github.com/poziel/localdev)** — A command-line tool that brings local projects, supporting services, and development workflows into one place.
-- **[Refinimo](https://github.com/poziel/refinimo)** — A free planning poker app that helps teams estimate work together, with custom decks and real-time voting.
-- **[Subfolio](https://github.com/poziel/subfolio)** — An app for tracking subscriptions and recurring expenses, projecting upcoming costs, and understanding spending over time.
+- **[Frame](https://github.com/poziel/frame)** A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.
+- **[Pixen](https://github.com/poziel/pixen)** A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.
+- **[Refinimo](https://github.com/poziel/refinimo)** A free planning poker app that helps teams estimate work together, with custom decks and real-time voting.
+- **[Subfolio](https://github.com/poziel/subfolio)** An app for tracking subscriptions and recurring expenses, projecting upcoming costs, and understanding spending over time.
 
 <br/>
 
-<img src="assets/sections/tech-stack.png"/>
+# Tech Stack
 
 <p>
-  <img src="https://skillicons.dev/icons?i=js,ts,vue,nuxt,svelte,html,css,scss,rust,cs,php,laravel,py,lua,git,github,vscode,nodejs,vite,tailwind,firebase,docker,postgres,mysql,azure,visualstudio&perline=50&theme=dark" alt="JavaScript, TypeScript, Vue, Nuxt, HTML, CSS, Sass, Rust, C#, PHP, Laravel, Python, Lua" />
+  <img src="https://skillicons.dev/icons?i=js,ts,vue,nuxt,svelte,html,css,scss,rust,cs,php,laravel,py,lua,git,github,vscode,nodejs,vite,tailwind,firebase,docker,postgres,mysql,azure,visualstudio&perline=20&theme=dark" alt="JavaScript, TypeScript, Vue, Nuxt, HTML, CSS, Sass, Rust, C#, PHP, Laravel, Python, Lua, Git, GitHub, Visual Studio Code, NodeJS, Vite, Tailwind, Firebase, Docker, Postgres, MySQL, Azure, Visual Studio" />
 </p>
 
 <br/>
 
-<img src="assets/sections/where-to-find-me.png"/>
+# Where To Find Me
 
 <div align="center">
   <a href="https://www.twitch.tv/poziel" style="text-decoration:none" target="_blank"><img src="https://img.shields.io/badge/Twitch-Poziel-9146FF?style=for-the-badge&logo=twitch&logoColor=white" alt="Twitch Badge"/></a>
