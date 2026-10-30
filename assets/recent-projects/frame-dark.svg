@@ -2,7 +2,7 @@
   <title id="title">Frame</title>
   <desc id="description">A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.</desc>
   <rect x="0.5" y="0.5" width="999" height="95" rx="4" fill="none" stroke="#30363d"/>
-  <rect x="8" y="8" width="80" height="80" rx="4" fill="#161b22"/>
+  <line x1="96" y1="1" x2="96" y2="95" stroke="#30363d"/>
   <image href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjYwMCIgdmlld0JveD0iMCAwIDYwMCA2MDAiPgogIDx0aXRsZT5mcmFtZS5zdmc8L3RpdGxlPgogIDxnIGlkPSJMYXllcl8xIiBkYXRhLW5hbWU9IkxheWVyIDEiPgogICAgPHBhdGggZD0iTTQ4LjE0OCAxNDguMTQ4IEw0MzMuMzMzIDAgTDQzMy4zMzMgMTIzLjY0NyBMMTk2LjI5NiAyMTQuODE1IFoiIGZpbGw9IiMwMDk4ZmYiLz4KICAgIDxwYXRoIGQ9Ik00MzMuMzMzIDAgTDU1MS44NTIgNjYuNjY3IEw1NTEuODUyIDQ1MS44NTIgTDQzMy4zMzMgMzg1LjE4NSBMNDMzLjMzMyAxMjMuNjQ3IFoiIGZpbGw9IiMwMDdhY2MiLz4KICAgIDxwYXRoIGQ9Ik0xOTYuMjk2IDQ3Ni4zNTMgTDQzMy4zMzMgMzg1LjE4NSBMNTUxLjg1MiA0NTEuODUyIEwxOTYuMjk2IDYwMCBaIiBmaWxsPSIjMDA5OGZmIi8+CiAgICA8cGF0aCBkPSJNNDguMTQ4IDE0OC4xNDggTDE5Ni4yOTYgMjE0LjgxNSBMMTk2LjI5NiA0NzYuMzUzIEwxOTYuMjk2IDYwMCBMNDguMTQ4IDUzMy4zMzMgWiIgZmlsbD0iIzAwN2FjYyIvPgogIDwvZz4KPC9zdmc+Cg==" x="16" y="16" width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
   <text x="108" y="34" fill="#58a6ff" font-family="Arial, sans-serif" font-size="19" font-weight="600">Frame</text>
   <text x="108" y="68" fill="#adbac7" font-family="monospace" font-size="16">A Vue and TypeScript application framework for VS Code-inspired interfaces, with option…</text>

@@ -39,8 +39,8 @@ export function renderCard(repo, logoData, dark = false) {
   const characters = Array.from(description);
   const summary = characters.length > 88 ? `${characters.slice(0, 87).join('').trimEnd()}…` : description;
   const colors = dark
-    ? { border: '#30363d', tile: '#161b22', title: '#58a6ff', text: '#adbac7' }
-    : { border: '#d0d7de', tile: '#f6f8fa', title: '#0969da', text: '#57606a' };
+    ? { border: '#30363d', title: '#58a6ff', text: '#adbac7' }
+    : { border: '#d0d7de', title: '#0969da', text: '#57606a' };
   const icon = logoData
     ? `<image href="${logoData}" x="16" y="16" width="64" height="64" preserveAspectRatio="xMidYMid meet"/>`
     : `<text x="48" y="59" text-anchor="middle" fill="${colors.title}" font-family="monospace" font-size="32">${escapeHtml(title.slice(0, 1))}</text>`;
@@ -48,7 +48,7 @@ export function renderCard(repo, logoData, dark = false) {
   <title id="title">${escapeHtml(title)}</title>
   <desc id="description">${escapeHtml(description)}</desc>
   <rect x="0.5" y="0.5" width="999" height="95" rx="4" fill="none" stroke="${colors.border}"/>
-  <rect x="8" y="8" width="80" height="80" rx="4" fill="${colors.tile}"/>
+  <line x1="96" y1="1" x2="96" y2="95" stroke="${colors.border}"/>
   ${icon}
   <text x="108" y="34" fill="${colors.title}" font-family="Arial, sans-serif" font-size="19" font-weight="600">${escapeHtml(title)}</text>
   <text x="108" y="68" fill="${colors.text}" font-family="monospace" font-size="16">${escapeHtml(summary)}</text>
