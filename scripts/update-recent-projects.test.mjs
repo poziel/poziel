@@ -28,10 +28,22 @@ test('preserves manual text and CRLF, escapes descriptions, and is idempotent', 
   const updated = updateReadme(original, input);
   assert.ok(updated.startsWith('Manual intro\r\n'));
   assert.ok(updated.endsWith('\r\nManual footer'));
-  assert.ok(updated.includes('A &lt;tag&gt; with \\[brackets\\] and \\*stars\\*'));
-  assert.equal(updated.match(/^- \[/gm).length, 5);
+  assert.ok(updated.includes('A &lt;tag&gt; with [brackets] and *stars*'));
+  assert.equal(updated.match(/<table width="100%">/g).length, 5);
   assert.equal(updateReadme(updated, input), updated);
   assert.ok(!updated.replaceAll('\r\n', '').includes('\n'));
+});
+
+test('renders existing logos, linked titles, and repository descriptions in cards', () => {
+  const input = [repo('frame', { default_branch: 'release/one', description: 'Original "description" & <text>' }),
+    ...projects.slice(1)];
+  const updated = updateReadme('<!-- RECENT-PROJECTS:START --><!-- RECENT-PROJECTS:END -->', input);
+  assert.ok(updated.includes('https://raw.githubusercontent.com/poziel/frame/release%2Fone/assets/frame.svg'));
+  assert.ok(updated.includes('width="48" height="48" alt="Frame logo"'));
+  assert.ok(updated.includes('<strong><a href="https://github.com/poziel/frame">Frame</a></strong><br>Original &quot;description&quot; &amp; &lt;text&gt;'));
+  assert.ok(updated.includes('<strong>T</strong>'));
+  assert.ok(!updated.includes('undefined'));
+  assert.ok(!updated.includes('style='));
 });
 
 test('rejects missing, reversed, or duplicated markers and incomplete results', () => {

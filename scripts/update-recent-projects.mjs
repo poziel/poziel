@@ -6,6 +6,16 @@ const owner = 'poziel';
 const startMarker = '<!-- RECENT-PROJECTS:START -->';
 const endMarker = '<!-- RECENT-PROJECTS:END -->';
 
+// Existing branding from each project's README or public site assets.
+// Projects without a registered logo use their initial instead of a broken image.
+const branding = {
+  frame: { title: 'Frame', logo: 'assets/frame.svg' },
+  'frame-server': { title: 'Frame Server', logo: 'assets/frame.svg' },
+  pixen: { title: 'Pixen', logo: 'assets/pixen.png' },
+  'pozieldotcom-lite': { title: 'poziel.com', logo: 'public/brand/poziel-mark.svg' },
+  reflet: { title: 'Reflet', logo: 'icons/reflet.svg' },
+};
+
 export function selectProjects(repositories) {
   return repositories
     .filter(repo => repo.owner?.login?.toLowerCase() === owner
@@ -16,10 +26,10 @@ export function selectProjects(repositories) {
     .slice(0, 5);
 }
 
-function escapeMarkdown(value) {
+function escapeHtml(value) {
   return value.replace(/\s+/g, ' ').trim()
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/[\\`*_{}\[\]()!|]/g, '\\$&');
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 export function updateReadme(readme, projects) {
@@ -33,11 +43,26 @@ export function updateReadme(readme, projects) {
   const newline = readme.includes('\r\n') ? '\r\n' : '\n';
   const lines = projects.map(repo => {
     const link = `https://github.com/${owner}/${encodeURIComponent(repo.name)}`;
-    const description = repo.description ? ` — ${escapeMarkdown(repo.description)}` : '';
-    return `- [${escapeMarkdown(repo.name)}](${link})${description}`;
+    const brand = branding[repo.name];
+    const title = escapeHtml(brand?.title ?? repo.name);
+    const logo = brand?.logo
+      ? `https://raw.githubusercontent.com/${owner}/${encodeURIComponent(repo.name)}/${encodeURIComponent(repo.default_branch ?? 'main')}/${brand.logo}`
+      : null;
+    const icon = logo
+      ? `<img src="${logo}" width="48" height="48" alt="${title} logo">`
+      : `<strong>${escapeHtml(repo.name.slice(0, 1).toUpperCase())}</strong>`;
+    const description = repo.description ? `<br>${escapeHtml(repo.description)}` : '';
+    return [
+      '<table width="100%">',
+      '  <tr>',
+      `    <td width="72" align="center" valign="middle"><a href="${link}">${icon}</a></td>`,
+      `    <td valign="middle"><strong><a href="${link}">${title}</a></strong>${description}</td>`,
+      '  </tr>',
+      '</table>',
+    ].join(newline);
   });
   return readme.slice(0, start + startMarker.length)
-    + newline + lines.join(newline) + newline + readme.slice(end);
+    + newline + newline + lines.join(newline + newline) + newline + newline + readme.slice(end);
 }
 
 export async function fetchRepositories(fetchImpl = fetch) {
