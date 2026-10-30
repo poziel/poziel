@@ -18,12 +18,15 @@
 
 <br/>
 
-# Pinned Project
+# Recent Projects
 
-- **[Frame](https://github.com/poziel/frame)** A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.
-- **[Pixen](https://github.com/poziel/pixen)** A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.
-- **[Refinimo](https://github.com/poziel/refinimo)** A free planning poker app that helps teams estimate work together, with custom decks and real-time voting.
-- **[Subfolio](https://github.com/poziel/subfolio)** An app for tracking subscriptions and recurring expenses, projecting upcoming costs, and understanding spending over time.
+<!-- RECENT-PROJECTS:START -->
+- [frame](https://github.com/poziel/frame) — A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.
+- [frame-server](https://github.com/poziel/frame-server) — Host-independent terminal and AI agent execution packages for Frame applications
+- [pixen](https://github.com/poziel/pixen) — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.
+- [pozieldotcom-lite](https://github.com/poziel/pozieldotcom-lite) — A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.
+- [reflet](https://github.com/poziel/reflet) — A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.
+<!-- RECENT-PROJECTS:END -->
 
 <br/>
 
