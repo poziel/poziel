@@ -52,11 +52,13 @@ export function updateReadme(readme, projects) {
       ? `<img src="${logo}" width="48" height="48" alt="${title} logo">`
       : `<strong>${escapeHtml(repo.name.slice(0, 1).toUpperCase())}</strong>`;
     const description = repo.description ? `<br>${escapeHtml(repo.description)}` : '';
+    // GitHub uses content-sized block tables. A generous cell width makes each
+    // card fill the column, while GitHub's max-width keeps it within the page.
     return [
       '<table width="100%">',
       '  <tr>',
-      `    <td width="72" align="center" valign="middle"><a href="${link}">${icon}</a></td>`,
-      `    <td valign="middle"><strong><a href="${link}">${title}</a></strong>${description}</td>`,
+      `    <td width="96" align="center" valign="middle"><a href="${link}">${icon}</a></td>`,
+      `    <td width="1000" valign="middle"><strong><a href="${link}">${title}</a></strong>${description}</td>`,
       '  </tr>',
       '</table>',
     ].join(newline);
