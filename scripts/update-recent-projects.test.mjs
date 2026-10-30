@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { fetchRepositories, selectProjects, updateReadme } from './update-recent-projects.mjs';
+import { fetchLogo, fetchRepositories, renderCard, selectProjects, updateReadme } from './update-recent-projects.mjs';
 
 const repo = (name, overrides = {}) => ({
   name, owner: { login: 'poziel' }, private: false, fork: false, archived: false,
@@ -29,21 +29,45 @@ test('preserves manual text and CRLF, escapes descriptions, and is idempotent', 
   assert.ok(updated.startsWith('Manual intro\r\n'));
   assert.ok(updated.endsWith('\r\nManual footer'));
   assert.ok(updated.includes('A &lt;tag&gt; with [brackets] and *stars*'));
-  assert.equal(updated.match(/<table width="100%">/g).length, 5);
+  assert.equal(updated.match(/<picture>/g).length, 5);
   assert.equal(updateReadme(updated, input), updated);
   assert.ok(!updated.replaceAll('\r\n', '').includes('\n'));
 });
 
-test('renders existing logos, linked titles, and repository descriptions in cards', () => {
-  const input = [repo('frame', { default_branch: 'release/one', description: 'Original "description" & <text>' }),
-    ...projects.slice(1)];
+test('links theme-aware cards and exposes full original descriptions as hover and alt text', () => {
+  const input = [repo('frame', { description: 'Original "description" & <text>' }), ...projects.slice(1)];
   const updated = updateReadme('<!-- RECENT-PROJECTS:START --><!-- RECENT-PROJECTS:END -->', input);
-  assert.ok(updated.includes('https://raw.githubusercontent.com/poziel/frame/release%2Fone/assets/frame.svg'));
-  assert.ok(updated.includes('width="48" height="48" alt="Frame logo"'));
-  assert.ok(updated.includes('<strong><a href="https://github.com/poziel/frame">Frame</a></strong><br>Original &quot;description&quot; &amp; &lt;text&gt;'));
-  assert.ok(updated.includes('<strong>T</strong>'));
+  assert.ok(updated.includes('href="https://github.com/poziel/frame" title="Original &quot;description&quot; &amp; &lt;text&gt;"'));
+  assert.ok(updated.includes('srcset="assets/recent-projects/frame-dark.svg"'));
+  assert.ok(updated.includes('src="assets/recent-projects/frame-light.svg"'));
+  assert.ok(updated.includes('alt="Frame — Original &quot;description&quot; &amp; &lt;text&gt;"'));
   assert.ok(!updated.includes('undefined'));
   assert.ok(!updated.includes('style='));
+});
+
+test('cards have identical geometry, square logos, and one ellipsized description line', () => {
+  const description = 'A long description with <markup> & details. '.repeat(6);
+  const svg = renderCard(repo('frame', { description }), 'data:image/png;base64,eA==');
+  assert.ok(svg.includes('width="1000" height="96" viewBox="0 0 1000 96"'));
+  assert.ok(svg.includes('width="64" height="64" preserveAspectRatio="xMidYMid meet"'));
+  assert.ok(svg.includes(`<desc id="description">${description.trim().replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('& details', '&amp; details')}</desc>`));
+  const line = svg.match(/<text x="108" y="68"[^>]*>(.*?)<\/text>/)[1];
+  assert.ok(line.endsWith('…'));
+  assert.ok(!line.includes('\n'));
+  assert.ok(renderCard(repo('frame'), null).includes('>A project.</text>'));
+  assert.ok(renderCard(repo('frame'), null, true).includes('#58a6ff'));
+});
+
+test('fetches and embeds logos without external image dependencies', async () => {
+  let requested;
+  const data = await fetchLogo(repo('frame', { default_branch: 'release/one' }), async url => {
+    requested = url;
+    return { ok: true, arrayBuffer: async () => new TextEncoder().encode('<svg/>') };
+  });
+  assert.ok(requested.includes('/release%2Fone/assets/frame.svg'));
+  assert.equal(data, 'data:image/svg+xml;base64,PHN2Zy8+');
+  assert.equal(await fetchLogo(repo('unknown')), null);
+  await assert.rejects(fetchLogo(repo('frame'), async () => ({ ok: false, status: 404 })), /404/);
 });
 
 test('rejects missing, reversed, or duplicated markers and incomplete results', () => {

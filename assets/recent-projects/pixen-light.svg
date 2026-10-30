@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="96" viewBox="0 0 1000 96" role="img" aria-labelledby="title description">
+  <title id="title">Pixen</title>
+  <desc id="description">A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.</desc>
+  <rect x="0.5" y="0.5" width="999" height="95" rx="4" fill="none" stroke="#d0d7de"/>
+  <rect x="8" y="8" width="80" height="80" rx="4" fill="#f6f8fa"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACOklEQVR4Ae3AA6AkWZbG8f937o3IzKdyS2Oubdu2bdu2bdu2bWmMnpZKr54yMyLu+Xa3anqmhztr1U+8EH/7Tm9sgJf8kV8Wzx/iBfjbd3pj3/RBHwPAHd/yVbzkj/yyeF6I5+Nv3+mNfdMHfQwAd3zLV3HTB30Md3zLV/GSP/LL4jkhnsvfvtMb+6YP+hge6I5v+Spu+qCP4Y5v+Spe8kd+WTwb4gH+9p3e2Dd90MfwQHd8y1dx0wd9DHd8y1dx0wd9DHd8y1fxkj/yy+IKxDP97Tu9sW/6oI/h+bnjW76Kmz7oY7jjW76Kmz7oY7jjW76Kl/yRXxaAAP72nd7YN33Qx/D83PEtX8VNH/Qx3PEtX8VNH/Qx3PEtX8VNH/Qx3PEtX8VL/sgvS3/7Tm/smz7oY3hh7viWr+KmD/oY7viWr+KmD/oY7viWr+KmD/oY7viWr0J/+05vbP4FN33Qx3DHt3wVN33Qx3DHt3wVN33Qx3DHt3wVAAL423d6Y/MC3PRBH8Md3/JV3PRBH8Md3/JV3PRBH8Md3/JVALzkj/yyxDP97Tu9sXkBbvqgj+GOb/kqbvqgj+GOb/kqAF7yR35ZAOIB/vad3tg8l5s+6GO441u+ips+6GO441u+CoCX/JFfFlcgnsvfvtMbm+dy0wd9DHd8y1cB8JI/8svi2RDPx9++0xubZ7rpgz6GO77lqwB4yR/5ZfGcEC/A377TG5sHeMkf+WXxvBAvxN++0xsb4CV/5JfF88c/ArIYmfE25zIVAAAAAElFTkSuQmCC" x="16" y="16" width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="108" y="34" fill="#0969da" font-family="Arial, sans-serif" font-size="19" font-weight="600">Pixen</text>
+  <text x="108" y="68" fill="#57606a" font-family="monospace" font-size="16">A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports…</text>
+</svg>

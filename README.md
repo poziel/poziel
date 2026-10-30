@@ -22,40 +22,40 @@
 
 <!-- RECENT-PROJECTS:START -->
 
-<table width="100%">
-  <tr>
-    <td width="96" align="center" valign="middle"><a href="https://github.com/poziel/frame"><img src="https://raw.githubusercontent.com/poziel/frame/main/assets/frame.svg" width="48" height="48" alt="Frame logo"></a></td>
-    <td width="1000" valign="middle"><strong><a href="https://github.com/poziel/frame">Frame</a></strong><br>A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.</td>
-  </tr>
-</table>
+<a href="https://github.com/poziel/frame" title="A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-dark.svg">
+    <img src="assets/recent-projects/frame-light.svg" width="1000" alt="Frame — A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
+  </picture>
+</a>
 
-<table width="100%">
-  <tr>
-    <td width="96" align="center" valign="middle"><a href="https://github.com/poziel/frame-server"><img src="https://raw.githubusercontent.com/poziel/frame-server/main/assets/frame.svg" width="48" height="48" alt="Frame Server logo"></a></td>
-    <td width="1000" valign="middle"><strong><a href="https://github.com/poziel/frame-server">Frame Server</a></strong><br>Host-independent terminal and AI agent execution packages for Frame applications</td>
-  </tr>
-</table>
+<a href="https://github.com/poziel/frame-server" title="Host-independent terminal and AI agent execution packages for Frame applications">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-server-dark.svg">
+    <img src="assets/recent-projects/frame-server-light.svg" width="1000" alt="Frame Server — Host-independent terminal and AI agent execution packages for Frame applications">
+  </picture>
+</a>
 
-<table width="100%">
-  <tr>
-    <td width="96" align="center" valign="middle"><a href="https://github.com/poziel/pixen"><img src="https://raw.githubusercontent.com/poziel/pixen/main/assets/pixen.png" width="48" height="48" alt="Pixen logo"></a></td>
-    <td width="1000" valign="middle"><strong><a href="https://github.com/poziel/pixen">Pixen</a></strong><br>A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.</td>
-  </tr>
-</table>
+<a href="https://github.com/poziel/pixen" title="A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pixen-dark.svg">
+    <img src="assets/recent-projects/pixen-light.svg" width="1000" alt="Pixen — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
+  </picture>
+</a>
 
-<table width="100%">
-  <tr>
-    <td width="96" align="center" valign="middle"><a href="https://github.com/poziel/pozieldotcom-lite"><img src="https://raw.githubusercontent.com/poziel/pozieldotcom-lite/main/public/brand/poziel-mark.svg" width="48" height="48" alt="poziel.com logo"></a></td>
-    <td width="1000" valign="middle"><strong><a href="https://github.com/poziel/pozieldotcom-lite">poziel.com</a></strong><br>A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.</td>
-  </tr>
-</table>
+<a href="https://github.com/poziel/pozieldotcom-lite" title="A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pozieldotcom-lite-dark.svg">
+    <img src="assets/recent-projects/pozieldotcom-lite-light.svg" width="1000" alt="poziel.com — A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
+  </picture>
+</a>
 
-<table width="100%">
-  <tr>
-    <td width="96" align="center" valign="middle"><a href="https://github.com/poziel/reflet"><img src="https://raw.githubusercontent.com/poziel/reflet/main/icons/reflet.svg" width="48" height="48" alt="Reflet logo"></a></td>
-    <td width="1000" valign="middle"><strong><a href="https://github.com/poziel/reflet">Reflet</a></strong><br>A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.</td>
-  </tr>
-</table>
+<a href="https://github.com/poziel/reflet" title="A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/reflet-dark.svg">
+    <img src="assets/recent-projects/reflet-light.svg" width="1000" alt="Reflet — A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
+  </picture>
+</a>
 
 <!-- RECENT-PROJECTS:END -->
 

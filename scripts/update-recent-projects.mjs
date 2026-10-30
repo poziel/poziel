@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -32,6 +32,40 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+export function renderCard(repo, logoData, dark = false) {
+  const title = branding[repo.name]?.title ?? repo.name;
+  const description = (repo.description ?? '').replace(/\s+/g, ' ').trim();
+  // Monospace keeps the single description line within a predictable width.
+  const characters = Array.from(description);
+  const summary = characters.length > 88 ? `${characters.slice(0, 87).join('').trimEnd()}…` : description;
+  const colors = dark
+    ? { border: '#30363d', tile: '#161b22', title: '#58a6ff', text: '#adbac7' }
+    : { border: '#d0d7de', tile: '#f6f8fa', title: '#0969da', text: '#57606a' };
+  const icon = logoData
+    ? `<image href="${logoData}" x="16" y="16" width="64" height="64" preserveAspectRatio="xMidYMid meet"/>`
+    : `<text x="48" y="59" text-anchor="middle" fill="${colors.title}" font-family="monospace" font-size="32">${escapeHtml(title.slice(0, 1))}</text>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="96" viewBox="0 0 1000 96" role="img" aria-labelledby="title description">
+  <title id="title">${escapeHtml(title)}</title>
+  <desc id="description">${escapeHtml(description)}</desc>
+  <rect x="0.5" y="0.5" width="999" height="95" rx="4" fill="none" stroke="${colors.border}"/>
+  <rect x="8" y="8" width="80" height="80" rx="4" fill="${colors.tile}"/>
+  ${icon}
+  <text x="108" y="34" fill="${colors.title}" font-family="Arial, sans-serif" font-size="19" font-weight="600">${escapeHtml(title)}</text>
+  <text x="108" y="68" fill="${colors.text}" font-family="monospace" font-size="16">${escapeHtml(summary)}</text>
+</svg>
+`;
+}
+
+export async function fetchLogo(repo, fetchImpl = fetch) {
+  const logo = branding[repo.name]?.logo;
+  if (!logo) return null;
+  const url = `https://raw.githubusercontent.com/${owner}/${encodeURIComponent(repo.name)}/${encodeURIComponent(repo.default_branch ?? 'main')}/${logo}`;
+  const response = await fetchImpl(url, { signal: AbortSignal.timeout(30_000) });
+  if (!response.ok) throw new Error(`Logo request failed for ${repo.name}: ${response.status}`);
+  const data = Buffer.from(await response.arrayBuffer()).toString('base64');
+  return `data:${logo.endsWith('.svg') ? 'image/svg+xml' : 'image/png'};base64,${data}`;
+}
+
 export function updateReadme(readme, projects) {
   if (projects.length !== 5) throw new Error('Expected five public projects; README left unchanged.');
   const start = readme.indexOf(startMarker);
@@ -43,24 +77,16 @@ export function updateReadme(readme, projects) {
   const newline = readme.includes('\r\n') ? '\r\n' : '\n';
   const lines = projects.map(repo => {
     const link = `https://github.com/${owner}/${encodeURIComponent(repo.name)}`;
-    const brand = branding[repo.name];
-    const title = escapeHtml(brand?.title ?? repo.name);
-    const logo = brand?.logo
-      ? `https://raw.githubusercontent.com/${owner}/${encodeURIComponent(repo.name)}/${encodeURIComponent(repo.default_branch ?? 'main')}/${brand.logo}`
-      : null;
-    const icon = logo
-      ? `<img src="${logo}" width="48" height="48" alt="${title} logo">`
-      : `<strong>${escapeHtml(repo.name.slice(0, 1).toUpperCase())}</strong>`;
-    const description = repo.description ? `<br>${escapeHtml(repo.description)}` : '';
-    // GitHub uses content-sized block tables. A generous cell width makes each
-    // card fill the column, while GitHub's max-width keeps it within the page.
+    const title = escapeHtml(branding[repo.name]?.title ?? repo.name);
+    const description = escapeHtml(repo.description ?? '');
+    const asset = `assets/recent-projects/${encodeURIComponent(repo.name)}`;
     return [
-      '<table width="100%">',
-      '  <tr>',
-      `    <td width="96" align="center" valign="middle"><a href="${link}">${icon}</a></td>`,
-      `    <td width="1000" valign="middle"><strong><a href="${link}">${title}</a></strong>${description}</td>`,
-      '  </tr>',
-      '</table>',
+      `<a href="${link}" title="${description}">`,
+      '  <picture>',
+      `    <source media="(prefers-color-scheme: dark)" srcset="${asset}-dark.svg">`,
+      `    <img src="${asset}-light.svg" width="1000" alt="${title} — ${description}">`,
+      '  </picture>',
+      '</a>',
     ].join(newline);
   });
   return readme.slice(0, start + startMarker.length)
@@ -88,6 +114,15 @@ async function main() {
   const projects = selectProjects(await fetchRepositories());
   const before = await readFile(path, 'utf8');
   const after = updateReadme(before, projects);
+  // Fetch all logos before writing, so a failed request leaves the old cards intact.
+  const logos = await Promise.all(projects.map(repo => fetchLogo(repo)));
+  await mkdir(new URL('../assets/recent-projects/', import.meta.url), { recursive: true });
+  for (const [index, repo] of projects.entries()) {
+    for (const dark of [false, true]) {
+      const assetPath = new URL(`../assets/recent-projects/${encodeURIComponent(repo.name)}-${dark ? 'dark' : 'light'}.svg`, import.meta.url);
+      await writeFile(assetPath, renderCard(repo, logos[index], dark));
+    }
+  }
   if (after !== before) await writeFile(path, after);
   console.log(`${after === before ? 'Already current' : 'Updated'}: ${projects.map(repo => repo.name).join(', ')}`);
 }
