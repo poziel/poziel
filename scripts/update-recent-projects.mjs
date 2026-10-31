@@ -6,8 +6,8 @@ const owner = 'poziel';
 const startMarker = '<!-- RECENT-PROJECTS:START -->';
 const endMarker = '<!-- RECENT-PROJECTS:END -->';
 
-// Existing branding from each project's README or public site assets.
-// Projects without a registered logo use their initial instead of a broken image.
+// Display names and fallback paths for existing projects with other structures.
+// Standard root/assets logo names are discovered automatically, ignoring case.
 const branding = {
   frame: { title: 'Frame', logo: 'assets/frame.svg' },
   'frame-server': { title: 'Frame Server', logo: 'assets/frame.svg' },
@@ -57,13 +57,45 @@ export function renderCard(repo, logoData, dark = false) {
 }
 
 export async function fetchLogo(repo, fetchImpl = fetch) {
-  const logo = branding[repo.name]?.logo;
-  if (!logo) return null;
-  const url = `https://raw.githubusercontent.com/${owner}/${encodeURIComponent(repo.name)}/${encodeURIComponent(repo.default_branch ?? 'main')}/${logo}`;
-  const response = await fetchImpl(url, { signal: AbortSignal.timeout(30_000) });
-  if (!response.ok) throw new Error(`Logo request failed for ${repo.name}: ${response.status}`);
-  const data = Buffer.from(await response.arrayBuffer()).toString('base64');
-  return `data:${logo.endsWith('.svg') ? 'image/svg+xml' : 'image/png'};base64,${data}`;
+  const repository = `${owner}/${encodeURIComponent(repo.name)}`;
+  const branch = encodeURIComponent(repo.default_branch ?? 'main');
+  const encodePath = path => path.split('/').map(encodeURIComponent).join('/');
+  async function listDirectory(path) {
+    const response = await fetchImpl(`https://api.github.com/repos/${repository}/contents/${encodePath(path)}?ref=${branch}`, {
+      headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'poziel-profile-readme' },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (response.status === 404) return [];
+    if (!response.ok) throw new Error(`Logo directory request failed for ${repo.name}: ${response.status}`);
+    const entries = await response.json();
+    if (!Array.isArray(entries)) throw new Error(`Unexpected logo directory response for ${repo.name}`);
+    return entries;
+  }
+  const root = await listDirectory('');
+  const assetsPath = root.find(entry => entry.type === 'dir' && entry.name.toLowerCase() === 'assets')?.path;
+  const assets = assetsPath ? await listDirectory(assetsPath) : [];
+  const candidates = [];
+  // Format wins over location and naming: every SVG precedes every PNG.
+  for (const extension of ['svg', 'png']) {
+    for (const entries of [root, assets]) {
+      for (const name of ['logo', repo.name.toLowerCase()]) {
+        const entry = entries.find(entry => entry.type === 'file'
+          && entry.name.toLowerCase() === `${name}.${extension}`);
+        if (entry) candidates.push(entry.path);
+      }
+    }
+    const fallback = branding[repo.name]?.logo;
+    if (fallback?.toLowerCase().endsWith(`.${extension}`)) candidates.push(fallback);
+  }
+  for (const logo of new Set(candidates)) {
+    const url = `https://raw.githubusercontent.com/${repository}/${branch}/${encodePath(logo)}`;
+    const response = await fetchImpl(url, { signal: AbortSignal.timeout(30_000) });
+    if (response.status === 404) continue;
+    if (!response.ok) throw new Error(`Logo request failed for ${repo.name}: ${response.status}`);
+    const data = Buffer.from(await response.arrayBuffer()).toString('base64');
+    return `data:${logo.toLowerCase().endsWith('.svg') ? 'image/svg+xml' : 'image/png'};base64,${data}`;
+  }
+  return null;
 }
 
 export function updateReadme(readme, projects) {

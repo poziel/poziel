@@ -61,13 +61,81 @@ test('cards have identical geometry, square logos, and one ellipsized descriptio
 test('fetches and embeds logos without external image dependencies', async () => {
   let requested;
   const data = await fetchLogo(repo('frame', { default_branch: 'release/one' }), async url => {
+    if (url.includes('api.github.com')) return { ok: true, json: async () => [] };
     requested = url;
     return { ok: true, arrayBuffer: async () => new TextEncoder().encode('<svg/>') };
   });
   assert.ok(requested.includes('/release%2Fone/assets/frame.svg'));
   assert.equal(data, 'data:image/svg+xml;base64,PHN2Zy8+');
-  assert.equal(await fetchLogo(repo('unknown')), null);
-  await assert.rejects(fetchLogo(repo('frame'), async () => ({ ok: false, status: 404 })), /404/);
+  assert.equal(await fetchLogo(repo('unknown'), async () => ({ ok: true, json: async () => [] })), null);
+  await assert.rejects(fetchLogo(repo('frame'), async () => ({ ok: false, status: 403 })), /403/);
+});
+
+const file = path => ({ type: 'file', name: path.split('/').at(-1), path });
+function logoFetch(rootFiles, assetFiles = [], { missing = [], error = null } = {}) {
+  const downloads = [];
+  return {
+    downloads,
+    fetch: async url => {
+      if (url.includes('api.github.com')) {
+        const inAssets = url.includes('/contents/Assets?');
+        const entries = inAssets ? assetFiles.map(file) : [
+          ...rootFiles.map(file),
+          ...(assetFiles.length ? [{ type: 'dir', name: 'Assets', path: 'Assets' }] : []),
+        ];
+        return { ok: true, json: async () => entries };
+      }
+      const path = decodeURIComponent(new URL(url).pathname.split('/main/')[1]);
+      downloads.push(path);
+      if (missing.includes(path)) return { ok: false, status: 404 };
+      if (error) return { ok: false, status: error };
+      return { ok: true, arrayBuffer: async () => new TextEncoder().encode(path) };
+    },
+  };
+}
+
+test('discovers both names and formats in either directory, ignoring capitalization', async () => {
+  for (const directory of ['', 'Assets/']) {
+    for (const name of ['LoGo', 'PiXeN']) {
+      for (const extension of ['SVG', 'PNG']) {
+        const path = `${directory}${name}.${extension}`;
+        const mock = logoFetch(directory ? [] : [path], directory ? [path] : []);
+        const result = await fetchLogo(repo('pixen'), mock.fetch);
+        assert.deepEqual(mock.downloads, [path]);
+        assert.ok(result.startsWith(extension === 'SVG' ? 'data:image/svg+xml;' : 'data:image/png;'));
+      }
+    }
+  }
+});
+
+test('SVG always wins over PNG, then root wins over assets and logo over project name', async () => {
+  const scenarios = [
+    { root: ['logo.png'], assets: ['Assets/pixen.svg'], winner: 'Assets/pixen.svg' },
+    { root: ['logo.svg', 'pixen.svg'], assets: ['Assets/logo.svg'], winner: 'logo.svg' },
+    { root: ['pixen.svg'], assets: ['Assets/logo.svg'], winner: 'pixen.svg' },
+    { root: [], assets: ['Assets/logo.svg', 'Assets/pixen.svg'], winner: 'Assets/logo.svg' },
+    { root: ['logo.png', 'pixen.png'], assets: ['Assets/logo.png'], winner: 'logo.png' },
+    { root: ['logo.svg'], assets: ['Assets/frame.svg'], winner: 'logo.svg' },
+  ];
+  for (const scenario of scenarios) {
+    const mock = logoFetch(scenario.root, scenario.assets);
+    await fetchLogo(repo('pixen'), mock.fetch);
+    assert.deepEqual(mock.downloads, [scenario.winner]);
+  }
+});
+
+test('keeps custom paths as fallbacks, skips missing files, and propagates server errors', async () => {
+  const custom = logoFetch([]);
+  await fetchLogo(repo('reflet'), custom.fetch);
+  assert.deepEqual(custom.downloads, ['icons/reflet.svg']);
+  const missing = logoFetch(['logo.svg', 'logo.png'], [], { missing: ['logo.svg'] });
+  const result = await fetchLogo(repo('new-project'), missing.fetch);
+  assert.deepEqual(missing.downloads, ['logo.svg', 'logo.png']);
+  assert.ok(result.startsWith('data:image/png;'));
+  const failure = logoFetch(['logo.svg', 'logo.png'], [], { error: 503 });
+  await assert.rejects(fetchLogo(repo('new-project'), failure.fetch), /503/);
+  assert.deepEqual(failure.downloads, ['logo.svg']);
+  assert.equal(await fetchLogo(repo('new-project'), async () => ({ ok: false, status: 404 })), null);
 });
 
 test('rejects missing, reversed, or duplicated markers and incomplete results', () => {
