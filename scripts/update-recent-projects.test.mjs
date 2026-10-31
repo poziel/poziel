@@ -40,7 +40,7 @@ test('links theme-aware cards and exposes full original descriptions as hover an
   assert.ok(updated.includes('href="https://github.com/poziel/frame" title="Original &quot;description&quot; &amp; &lt;text&gt;"'));
   assert.ok(updated.includes('srcset="assets/recent-projects/frame-dark.svg"'));
   assert.ok(updated.includes('src="assets/recent-projects/frame-light.svg"'));
-  assert.ok(updated.includes('alt="Frame — Original &quot;description&quot; &amp; &lt;text&gt;"'));
+  assert.ok(updated.includes('alt="frame — Original &quot;description&quot; &amp; &lt;text&gt;"'));
   assert.ok(!updated.includes('undefined'));
   assert.ok(!updated.includes('style='));
 });
@@ -61,11 +61,11 @@ test('cards have identical geometry, square logos, and one ellipsized descriptio
 test('fetches and embeds logos without external image dependencies', async () => {
   let requested;
   const data = await fetchLogo(repo('frame', { default_branch: 'release/one' }), async url => {
-    if (url.includes('api.github.com')) return { ok: true, json: async () => [] };
+    if (url.includes('api.github.com')) return { ok: true, json: async () => [file('frame.svg')] };
     requested = url;
     return { ok: true, arrayBuffer: async () => new TextEncoder().encode('<svg/>') };
   });
-  assert.ok(requested.includes('/release%2Fone/assets/frame.svg'));
+  assert.ok(requested.includes('/release%2Fone/frame.svg'));
   assert.equal(data, 'data:image/svg+xml;base64,PHN2Zy8+');
   assert.equal(await fetchLogo(repo('unknown'), async () => ({ ok: true, json: async () => [] })), null);
   await assert.rejects(fetchLogo(repo('frame'), async () => ({ ok: false, status: 403 })), /403/);
@@ -124,10 +124,10 @@ test('SVG always wins over PNG, then root wins over assets and logo over project
   }
 });
 
-test('keeps custom paths as fallbacks, skips missing files, and propagates server errors', async () => {
+test('uses only standard paths, skips missing files, and propagates server errors', async () => {
   const custom = logoFetch([]);
-  await fetchLogo(repo('reflet'), custom.fetch);
-  assert.deepEqual(custom.downloads, ['icons/reflet.svg']);
+  assert.equal(await fetchLogo(repo('reflet'), custom.fetch), null);
+  assert.deepEqual(custom.downloads, []);
   const missing = logoFetch(['logo.svg', 'logo.png'], [], { missing: ['logo.svg'] });
   const result = await fetchLogo(repo('new-project'), missing.fetch);
   assert.deepEqual(missing.downloads, ['logo.svg', 'logo.png']);

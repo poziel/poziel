@@ -25,35 +25,35 @@
 <a href="https://github.com/poziel/pixen" title="A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pixen-dark.svg">
-    <img src="assets/recent-projects/pixen-light.svg" width="1000" alt="Pixen — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
+    <img src="assets/recent-projects/pixen-light.svg" width="1000" alt="pixen — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
   </picture>
 </a>
 
 <a href="https://github.com/poziel/frame" title="A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-dark.svg">
-    <img src="assets/recent-projects/frame-light.svg" width="1000" alt="Frame — A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
+    <img src="assets/recent-projects/frame-light.svg" width="1000" alt="frame — A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
   </picture>
 </a>
 
 <a href="https://github.com/poziel/frame-server" title="Host-independent terminal and AI agent execution packages for Frame applications">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-server-dark.svg">
-    <img src="assets/recent-projects/frame-server-light.svg" width="1000" alt="Frame Server — Host-independent terminal and AI agent execution packages for Frame applications">
+    <img src="assets/recent-projects/frame-server-light.svg" width="1000" alt="frame-server — Host-independent terminal and AI agent execution packages for Frame applications">
   </picture>
 </a>
 
 <a href="https://github.com/poziel/pozieldotcom-lite" title="A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pozieldotcom-lite-dark.svg">
-    <img src="assets/recent-projects/pozieldotcom-lite-light.svg" width="1000" alt="poziel.com — A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
+    <img src="assets/recent-projects/pozieldotcom-lite-light.svg" width="1000" alt="pozieldotcom-lite — A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
   </picture>
 </a>
 
 <a href="https://github.com/poziel/reflet" title="A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/reflet-dark.svg">
-    <img src="assets/recent-projects/reflet-light.svg" width="1000" alt="Reflet — A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
+    <img src="assets/recent-projects/reflet-light.svg" width="1000" alt="reflet — A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
   </picture>
 </a>
 

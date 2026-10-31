@@ -6,16 +6,6 @@ const owner = 'poziel';
 const startMarker = '<!-- RECENT-PROJECTS:START -->';
 const endMarker = '<!-- RECENT-PROJECTS:END -->';
 
-// Display names and fallback paths for existing projects with other structures.
-// Standard root/assets logo names are discovered automatically, ignoring case.
-const branding = {
-  frame: { title: 'Frame', logo: 'assets/frame.svg' },
-  'frame-server': { title: 'Frame Server', logo: 'assets/frame.svg' },
-  pixen: { title: 'Pixen', logo: 'assets/pixen.png' },
-  'pozieldotcom-lite': { title: 'poziel.com', logo: 'public/brand/poziel-mark.svg' },
-  reflet: { title: 'Reflet', logo: 'icons/reflet.svg' },
-};
-
 export function selectProjects(repositories) {
   return repositories
     .filter(repo => repo.owner?.login?.toLowerCase() === owner
@@ -33,7 +23,7 @@ function escapeHtml(value) {
 }
 
 export function renderCard(repo, logoData, dark = false) {
-  const title = branding[repo.name]?.title ?? repo.name;
+  const title = repo.name;
   const description = (repo.description ?? '').replace(/\s+/g, ' ').trim();
   // Monospace keeps the single description line within a predictable width.
   const characters = Array.from(description);
@@ -84,8 +74,6 @@ export async function fetchLogo(repo, fetchImpl = fetch) {
         if (entry) candidates.push(entry.path);
       }
     }
-    const fallback = branding[repo.name]?.logo;
-    if (fallback?.toLowerCase().endsWith(`.${extension}`)) candidates.push(fallback);
   }
   for (const logo of new Set(candidates)) {
     const url = `https://raw.githubusercontent.com/${repository}/${branch}/${encodePath(logo)}`;
@@ -109,7 +97,7 @@ export function updateReadme(readme, projects) {
   const newline = readme.includes('\r\n') ? '\r\n' : '\n';
   const lines = projects.map(repo => {
     const link = `https://github.com/${owner}/${encodeURIComponent(repo.name)}`;
-    const title = escapeHtml(branding[repo.name]?.title ?? repo.name);
+    const title = escapeHtml(repo.name);
     const description = escapeHtml(repo.description ?? '');
     const asset = `assets/recent-projects/${encodeURIComponent(repo.name)}`;
     return [

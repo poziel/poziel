@@ -9,16 +9,17 @@ The search order is:
 2. `<repository-name>.svg`
 3. `assets/logo.svg`
 4. `assets/<repository-name>.svg`
-5. Existing custom SVG fallback, when configured
-6. `logo.png`
-7. `<repository-name>.png`
-8. `assets/logo.png`
-9. `assets/<repository-name>.png`
-10. Existing custom PNG fallback, when configured
+5. `logo.png`
+6. `<repository-name>.png`
+7. `assets/logo.png`
+8. `assets/<repository-name>.png`
 
 All SVGs are preferred over PNGs, even when the PNG is in the root and the SVG
 is in `assets/`. Within a format, root files take priority over assets files,
 and `logo` takes priority over the repository name.
+
+There are no project-specific overrides or custom fallback paths. Card titles
+use the repository name directly.
 
 File and assets-directory matching ignores capitalization: `Pixen.svg`,
 `pixen.svg`, and `PIXEN.SVG` all match the `pixen` repository. The updater keeps
