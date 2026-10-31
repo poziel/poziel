@@ -22,6 +22,13 @@
 
 <!-- RECENT-PROJECTS:START -->
 
+<a href="https://github.com/poziel/pixen" title="A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pixen-dark.svg">
+    <img src="assets/recent-projects/pixen-light.svg" width="1000" alt="Pixen — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
+  </picture>
+</a>
+
 <a href="https://github.com/poziel/frame" title="A Vue and TypeScript application framework for VS Code-inspired interfaces, with optional host integrations and feature backends.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-dark.svg">
@@ -33,13 +40,6 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/frame-server-dark.svg">
     <img src="assets/recent-projects/frame-server-light.svg" width="1000" alt="Frame Server — Host-independent terminal and AI agent execution packages for Frame applications">
-  </picture>
-</a>
-
-<a href="https://github.com/poziel/pixen" title="A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pixen-dark.svg">
-    <img src="assets/recent-projects/pixen-light.svg" width="1000" alt="Pixen — A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
   </picture>
 </a>
 
