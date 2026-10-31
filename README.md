@@ -22,6 +22,13 @@
 
 <!-- RECENT-PROJECTS:START -->
 
+<a href="https://github.com/poziel/ai-resources" title="Reusable skills, instruction templates, sub-agents, MCP servers, and scripts for AI-assisted development.">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/ai-resources-dark.svg">
+    <img src="assets/recent-projects/ai-resources-light.svg" width="1000" alt="ai-resources — Reusable skills, instruction templates, sub-agents, MCP servers, and scripts for AI-assisted development.">
+  </picture>
+</a>
+
 <a href="https://github.com/poziel/pixen" title="A desktop pixel-art editor with animation, AI-assisted drawing, and scriptable exports to images, animations, Aseprite, and Pixelorama.">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pixen-dark.svg">
@@ -47,13 +54,6 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/pozieldotcom-lite-dark.svg">
     <img src="assets/recent-projects/pozieldotcom-lite-light.svg" width="1000" alt="pozieldotcom-lite — A lightweight personal landing page for poziel.com, featuring my projects and social links while the full website is in development.">
-  </picture>
-</a>
-
-<a href="https://github.com/poziel/reflet" title="A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/recent-projects/reflet-dark.svg">
-    <img src="assets/recent-projects/reflet-light.svg" width="1000" alt="reflet — A Windows desktop app for organizing cloud backup destinations and running on-demand Google Drive uploads, powered by Rust, Tauri, and rclone.">
   </picture>
 </a>
 
